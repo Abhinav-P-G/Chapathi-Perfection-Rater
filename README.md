@@ -1,102 +1,56 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# PETALPLATE 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: PixelNoise
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
+- Team Lead: Abhinav P G - GEC PALAKKAD
+- Member 2: Anupama J A - GEC PALAKKAD
 - Member 3: [Name] - [College]
 
 ### Project Description
-[2-3 lines about what your project does]
+1. Chapati Roundness and Spot Detection
+This module uses computer vision techniques to analyze chapati images for two key quality factors: roundness and surface defects. The image is preprocessed, edges are detected, and contours are analyzed to calculate a roundness score. HSV color filtering and morphological operations are applied to detect and highlight surface spots or burns. The system helps in automated quality grading for food inspection.
+
+2. Marigold Petal Counter
+This module automatically counts the petals of a marigold flower from an input image. Using HSV color filtering to isolate the yellow-orange hue range, the system extracts the flower’s contour and generates an angular histogram. Peaks in this histogram represent individual petals, which are then counted after smoothing and merging nearby peaks. This can be used in agricultural research, plant health monitoring, and yield studies.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Every day, millions suffer in silence… from slightly oval chapatis and marigolds with petal counts that are probably fine. Dinner tables across the world are plagued by imperfectly round bread, and gardens are filled with flowers whose petal numbers go unverified. How can humanity truly progress if we don’t know whether our chapati is perfectly circular or if our marigold meets the “ideal petal standard”?
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+We bring you the ultimate fusion of culinary and botanical precision: a computer vision system that checks the roundness of chapatis and counts marigold petals — because why should bread and flowers escape scientific scrutiny? With finely tuned HSV filters, edgy Canny magic, and a petal-detecting angular histogram, we ensure your dinner and your garden both pass our absurdly high standards. It’s quality control… where quality control was never needed.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+Languages used: Python
+Frameworks used:Streamlit 
+Libraries used: 
+OpenCV – Image processing, contour detection, color filtering (HSV), morphological operations
+NumPy – Numerical computations, histogram generation
+Matplotlib – Visualization of analysis results and histograms
+Streamlit – For building an interactive UI to upload and analyze images
+Tools used:
+Vs code
+Git/GitHub – Version control
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
 
 # Run
-[commands]
+streamlit run filename
 
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+[demo video of chapathi perfect test.py](Screencast from 2025-08-09 15-45-39.webm)
+[demo video of petal_counter.py](video_2025-08-09_16-11-56.mp4)
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
-
----
-Made with ❤️ at TinkerHub Useless Projects 
-
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
-
-
-
+- Abhinav P G: Chapati roundness,brown spot,toast level detection
+- Anupama J A: Petal counter
