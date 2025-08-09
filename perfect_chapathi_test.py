@@ -55,21 +55,30 @@ def detect_toast_level(img, mask):
         return 0.0
 
     toast_percent = (browns / total) * 100
-    return 40 + toast_percent
+    return 30 + toast_percent
 
-def detect_brown_spots(gray_img, mask):
-    spot_thresh = cv2.threshold(gray_img, 80, 255, cv2.THRESH_BINARY_INV)[1]
-    spot_thresh = cv2.bitwise_and(spot_thresh, spot_thresh, mask=mask)
+def detect_brown_spots(img, mask):
+    # Convert to LAB
+    lab = cv2.cvtColor(img, cv2.COLOR_RGB2LAB)
+    L, A, B = cv2.split(lab)
 
-    contours, _ = cv2.findContours(spot_thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    brown_spots = []
-    for cnt in contours:
-        if cv2.contourArea(cnt) > 30:
-            mask_check = np.zeros_like(mask)
-            cv2.drawContours(mask_check, [cnt], -1, 255, -1)
-            if cv2.countNonZero(cv2.bitwise_and(mask_check, mask)) == cv2.countNonZero(mask_check):
-                brown_spots.append(cnt)
+    # Toasted spots are darker (low L) and more yellow-brown (high B)
+    brown_mask = cv2.inRange(L, 0, 160)  # Lower lightness = darker
+    yellow_mask = cv2.inRange(B, 135, 200)  # Yellowish-brown tones
+
+    combined = cv2.bitwise_and(brown_mask, yellow_mask)
+    combined = cv2.bitwise_and(combined, mask)
+
+    # Clean noise
+    kernel = np.ones((3, 3), np.uint8)
+    combined = cv2.morphologyEx(combined, cv2.MORPH_OPEN, kernel, iterations=1)
+
+    # Find brown spot contours
+    contours, _ = cv2.findContours(combined, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    brown_spots = [cnt for cnt in contours if 20 < cv2.contourArea(cnt) < 2000]
+
     return brown_spots
+
 
 def process_image(uploaded_image):
     img = np.array(uploaded_image.convert('RGB'))
@@ -86,7 +95,7 @@ def process_image(uploaded_image):
     roundness = calculate_roundness(biggest)
 
     toast_level = detect_toast_level(img, mask)
-    brown_spots = detect_brown_spots(gray, mask)
+    brown_spots = detect_brown_spots(img, mask)
 
     output = img.copy()
     cv2.drawContours(output, [biggest], -1, (0, 255, 0), 5)
