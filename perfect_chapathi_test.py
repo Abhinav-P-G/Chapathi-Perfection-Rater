@@ -131,7 +131,7 @@ def get_toast_message(toast_level):
         return "💀 Charcoal edition — perfect for BBQ lovers."
 
 # Streamlit UI
-st.title("🫓 Chapathi Roundness Rater (Shadow-Proof Edition!)")
+st.title("🫓 Chapathi Perfection Rater! ")
 st.write("Upload a top-view image of your chapathi and prepare to be judged 😈.")
 
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
