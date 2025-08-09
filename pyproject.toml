@@ -1,0 +1,12 @@
+[project]
+name = "useless-project-temp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cvzone>=1.6.1",
+    "numpy>=2.3.2",
+    "opencv-python>=4.11.0.86",
+    "streamlit>=1.48.0",
+]
