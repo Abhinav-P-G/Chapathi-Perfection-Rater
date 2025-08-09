@@ -11,7 +11,6 @@
 ### Team Members
 - Team Lead: Abhinav P G - GEC PALAKKAD
 - Member 2: Anupama J A - GEC PALAKKAD
-- Member 3: [Name] - [College]
 
 ### Project Description
 1. Chapati Roundness and Spot Detection
