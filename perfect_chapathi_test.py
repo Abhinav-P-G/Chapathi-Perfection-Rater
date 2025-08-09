@@ -69,6 +69,19 @@ def get_rating_message(score):
     else:
         return "🤡 Did you drop this on the floor and stamp it?"
 
+def get_toast_message(toast_level):
+    if toast_level < 20:
+        return "🌞 Pale beauty — did you even light the stove?"
+    elif toast_level < 40:
+        return "🥱 Lightly kissed by the pan — elegant but shy."
+    elif toast_level < 60:
+        return "🍯 Golden perfection — Instagram-worthy!"
+    elif toast_level < 80:
+        return "🔥 A bit on the adventurous side — crunchy vibes!"
+    else:
+        return "💀 Charcoal edition — perfect for BBQ lovers."
+
+
 # Streamlit UI
 st.title("🫓 Chapathi Roundness Rater (Now with Toast & Spot Detection!)")
 st.write("Upload a top-view image of your chapathi and prepare to be judged 😈.")
@@ -84,9 +97,10 @@ if uploaded_file:
 
     st.subheader("📊 Results:")
     st.markdown(f"**Roundness Score:** {roundness:.2f}%")
-    st.markdown(f"**Toast Level (Overcooked %):** {toast_level:.2f}%")
+    st.markdown(f"**Toast Level %:** {toast_level:.2f}%")
     st.markdown(f"**Brown Spots Detected:** {spot_count}")
 
     st.subheader("Verdict:")
     st.success(get_rating_message(roundness))
+    st.success(get_toast_message(toast_level))
 
